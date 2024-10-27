@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  expressapiserver:
+    image: expressapiserver
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:8000"
+
+  gqlserver:
+    image: gqlserver
+    build:
+      context: gqlserver
+      dockerfile: ./Dockerfile.gqlserver
+    ports:
+      - "3000:3000"

@@ -1,0 +1,11 @@
+FROM denoland/deno:ubuntu-2.0.3 as build
+
+WORKDIR /app
+COPY . .
+
+WORKDIR /app
+RUN deno compile -A -o app main.ts
+
+FROM gcr.io/distroless/cc-debian12
+COPY --from=build /app /
+CMD ["./app"]
